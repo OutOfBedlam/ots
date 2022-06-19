@@ -28,7 +28,7 @@ autonumber
 
 - 렌더링 서버가 데이터 서버를 바라보도록 `-i` 파라미터에 데이터 서버의 endpoint를 지정한다.
 ```
-./tmp/ots OTS -p 1919 -i tcp://127.0.0.1:1918
+./tmp/ots server -p 1919 -i tcp://127.0.0.1:1918
 ```
 
 이렇게 한 후 레더링 서버를 웹브라우저로 접속하면 아래와 같은 흐름으로 처리된다.
@@ -48,6 +48,14 @@ autonumber
    Data-Server ->>- Render-Server: map data (osm features)
    Render-Server->>Render-Server: Gen image
    Render-Server ->>- Browser: .png
+```
+
+### 서버 설정 파일로 구동하는 방법
+
+`server-config-sample.hcl`을 수정하여 설정파일을 생성하고 `*.hcl` 확장자로 저장하고, `-c` 옵션으로 경로를 지정한다.
+
+```
+./tmp/ots server -c <config_file.hcl>
 ```
 
 ### *.osm.pdf 파일 획득 방법

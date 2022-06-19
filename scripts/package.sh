@@ -25,7 +25,7 @@ rm -rf packages/$bdir && mkdir -p packages/$bdir
 case $PKGNAME in
     *) 
         declare -a BINS=( $PKGNAME )
-        declare -a DOCS=("README.md")
+        declare -a DOCS=("README.md", "server-config-sample.hcl")
         ;;
 esac
 
