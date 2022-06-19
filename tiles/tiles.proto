@@ -1,0 +1,114 @@
+syntax = "proto3";
+
+option go_package = "./tiles";
+
+// Caution!! the data definition of node, way, relation in here is different from original osm.pbf format
+// the origin format can be found in https://github.com/paulmach/osm/blob/master/osmpbf/internal/osmpbf/osmformat.proto
+
+message Node {
+    int64 id = 1;
+    map<string, string> tags = 2;
+    double lat = 8;
+    double lon = 9;
+}
+
+message Way {
+    message NodeRef {
+        int64 id = 1;
+        double lat = 8;
+        double lon = 9;
+    }
+
+    int64 id = 1;
+    map<string, string> tags = 2;
+
+    double minLat = 5;
+    double minLon = 6;
+    double maxLat = 7;
+    double maxLon = 8;
+    repeated NodeRef nodes = 9;
+}
+
+message Relation {
+    int64 id = 1;
+    map<string, string> tags = 2;
+
+    double minLat = 5;
+    double minLon = 6;
+    double maxLat = 7;
+    double maxLon = 8;
+    repeated Member members = 9;
+
+    enum MemberType {
+        UNKNOWN = 0;
+        NODE = 1;
+        WAY = 2;
+        RELATION = 3;
+        BOUNDS = 4;
+    }
+    
+    message Member {
+        int64 id = 1;
+        MemberType type = 2;
+        string role = 3;
+    }
+}
+
+service Tile {
+    rpc Find(FindRequest) returns(FindResponse) {}
+    rpc Get(GetRequest) returns(GetResponse) {}
+    rpc Scan(ScanRequest) returns(ScanResponse){}
+}
+
+message FindRequest {
+    double minLat = 1;
+    double minLon = 2;
+    double maxLat = 3;
+    double maxLon = 4;
+}
+
+message FindResponse {
+    repeated Way ways = 1;
+    repeated Node nodes = 2;
+    repeated Relation relations = 3;
+    int32 code = 8;
+    string reason = 9;
+    string elapsed = 10;
+}
+
+message GetRequest {
+    enum Type {
+        UNKNOWN = 0;
+        NODE = 1;
+        WAY = 2;
+        RELATION = 3;
+    }
+    Type type = 1;
+    int64 id = 2;
+}
+
+message GetResponse {
+    Node node = 1;
+    Way way = 2;
+    Relation relation = 3;
+    string elapsed = 10;
+}
+
+message ScanRequest {
+    enum Scope {
+        UNKNOWN = 0;
+        NODE = 1;
+        WAY = 2;
+        RELATION = 3;
+    }
+    Scope scope = 1;
+    string tag = 2;
+    string keyword =3;
+}
+
+message ScanResponse {
+    repeated Node nodes = 1;
+    repeated Way ways = 2;
+    repeated Relation relations = 3;
+    string elapsed = 10;
+}

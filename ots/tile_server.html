@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+        crossorigin=""></script>
+</head>
+
+<body>
+    <div id="map" style="height: 100%;"></div>
+</body>
+<script lang="javascript">
+    var map = L.map('map', {
+        center: [37.52164,126.92728], zoom:15, // 여의도
+        //center: [37.52361,126.97978], zoom: 17, // 국립중앙박물관
+        //center: [37.51261,127.06828], zoom: 17, // 잠실탄천
+        //center: [37.51305,127.09989], zoom: 17, // 잠실사거리
+    });
+    
+    L.tileLayer('/tiles/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19,
+        id: 'mapbox/streets-v11',
+    }).addTo(map);
+</script>
+
+</html>
