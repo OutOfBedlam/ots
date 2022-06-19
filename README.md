@@ -58,6 +58,36 @@ autonumber
 ./tmp/ots server -c <config_file.hcl>
 ```
 
+*공통 설정 항목*
+
+| 항목          | 설명         | 예   | 비고|
+| -------------| ------------| --- | -------- |
+| `pname`      | 프로세스의 이름을 설정 | `"ots01"` | |
+| `osm-data-source` | 데이터 파일 또는 서버의 경로 | `"./tmp/south-korea-2022-04-18.osm.pbf"` `"tcp://127.0.0.1:1918"` |  |
+| `bind`       | listening address | `"127.0.0.1"` | |
+| `port`       | listening port    | 1919 | |
+| `grpc.max-recv-msg-size` | grpc 수신 메시지 제한 (MB) | 100 | |
+| `grpc.max-send-msg-size` | grpc 송신 메시지 제한 (MB) | 100 | |
+| `log.console`       | 로그 화면 출력       | `true` 또는 `false` | |
+| `log.filename`      | 로그 파일 경로       |     | |
+| `log.default-prefix-width` |            | 10 | |
+| `log.default-level` | 로그 레벨           | `"TRACE"`| | 
+| `http.console-color`| http 메시지 컬러 사용 | `true` 또는 `false` | |
+| `http.debug-mode`   | http 서버 디버그 모드 | `true` 또는 `false` | |
+| `httplog.console`   |||
+| `httplog.filename`  |||
+| `httplog.default-prefix-width`|||
+| `httplog.default-level`|||
+
+*렌더링 서버 설정 항목*
+
+| 항목          | 설명         | 예   | 비고|
+| -------------| ------------| --- | -------- |
+| `cache-size` | lru cache의 크기 | 2000 | |
+| `show-watermark` | 렌더링된 타일 이미지에 watermark삽입 | true 또는 false | 렌더서버 |
+| `show-labels` | 렌더링중에 건물/도로명을 표시 | true 또는 false | 렌더서버 |
+
+
 ### *.osm.pdf 파일 획득 방법
 
 한국 지역 osm.pbf 파일 다운로드
