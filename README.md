@@ -1,5 +1,10 @@
 
 # OpenStreetMap Tile Server (OTS)
+OTS는 서버로 시작하면서 OpenStreetMap의 데이터파일(*.osm.pbf)을 메모리로 읽어들인 후
+HTTP 요청에 따라 지도를 생성할 수 있는 타일 서버이다.
+
+![](docs/screenshot_00.jpg)
+
 
 ### 타일 렌더링 서버와 OSM 데이터 서버를 하나의 프로세스로 구동하는 방법
 
