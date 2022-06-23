@@ -20,7 +20,7 @@ func (p LatLon) Point() Point {
 	return Point{p.Lon, p.Lat}
 }
 
-func LatLngFromPoint(p Point) LatLon {
+func LatLonFromPoint(p Point) LatLon {
 	return LatLon{Lat: p[1], Lon: p[0]}
 }
 

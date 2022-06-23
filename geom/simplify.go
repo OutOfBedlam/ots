@@ -6,7 +6,7 @@ func SimplifyPath(points []Point, ep float64) []Point {
 		return points
 	}
 
-	l := Line{Start: LatLngFromPoint(points[0]), End: LatLngFromPoint(points[len(points)-1])}
+	l := Line{Start: LatLonFromPoint(points[0]), End: LatLonFromPoint(points[len(points)-1])}
 
 	idx, maxDist := l.SeekMostDistantPoint(points)
 	if maxDist >= ep {
