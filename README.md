@@ -87,24 +87,24 @@ edit and copy `server-config-sample.hcl`, keep file extension as `*.hcl`. then a
 
 *config file items*
 
-| item         | desc        | ex   | |
-| -------------| ------------| --- | -------- |
-| `pname`      | process instance name | `"ots01"` | |
-| `osm-data-source` | data file or data server address | `"./tmp/south-korea-2022-04-18.osm.pbf"` `"tcp://127.0.0.1:1918"` |  |
-| `bind`       | listening address | `"127.0.0.1"` | |
-| `port`       | listening port    | 1919 | |
-| `grpc.max-recv-msg-size` | grpc limit (MB) | 100 | |
-| `grpc.max-send-msg-size` | grpc limit (MB) | 100 | |
-| `log.console`       | log output to console       | `true` `false` | |
-| `log.filename`      | log file path               |     | |
-| `log.default-prefix-width` |            | 10 | |
-| `log.default-level` | log level         | `"TRACE"`| | 
-| `http.console-color`| colored http log | `true` `false` | |
-| `http.debug-mode`   | debug http log   | `true` `false` | |
-| `httplog.console`   |||
-| `httplog.filename`  |||
-| `httplog.default-prefix-width`|||
-| `httplog.default-level`|||
+| item                     | desc                             | ex             |
+| ------------------------ | -------------------------------- | -------------- |
+| `pname`                  | process instance name            | `"ots01"`      |
+| `osm-data-source`        | data file or data server address | `"./data.osm.pbf"`<br/> `"tcp://localhost:1918"` |
+| `bind`                   | listening address                | `"127.0.0.1"`  |
+| `port`                   | listening port                   | 1919           |
+| `grpc.max-recv-msg-size` | grpc limit (MB)                  | 100            |
+| `grpc.max-send-msg-size` | grpc limit (MB)                  | 100            |
+| `log.console`            | log output to console            | `true` `false` |
+| `log.filename`           | log file path                    |                |
+| `log.default-prefix-width` |                                | 10             |
+| `log.default-level`      | log level                        | `"TRACE"`      |
+| `http.console-color`     | colored http log                 | `true` `false` |
+| `http.debug-mode`        | debug http log                   | `true` `false` |
+| `httplog.console`        |                                  |                |
+| `httplog.filename`       |                                  |                |
+| `httplog.default-prefix-width`|                             |                |
+| `httplog.default-level`  |                                  |                |
 
 *rendering server only items*
 
@@ -113,6 +113,8 @@ edit and copy `server-config-sample.hcl`, keep file extension as `*.hcl`. then a
 | `cache-size`     | size of lru cache                     | 2000           |
 | `show-watermark` | watermark (tile coordinates) on tiles | `true` `false` |
 | `show-labels`    | enable labels                         | `true` `false` |
+
+> All items in config file can be override by command line arguments. the name of argument is same as config item with double dash `--`. For example, to override port number `ots -c my-config.hcl --port=2929`, port number 2929 will be applied.
 
 
 ### Where to download `*.osm.pdf` files
