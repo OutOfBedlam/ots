@@ -26,6 +26,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/soheilhy/cmux"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 type tileServer struct {
@@ -119,6 +120,7 @@ func tile_server(conf *TileServerConfig) {
 
 	grpcS := grpc.NewServer(grpcOpt...)
 	tiles.RegisterTileServer(grpcS, &svr)
+	reflection.Register(grpcS)
 
 	httpSvr := httpsvr.NewServer(&httpsvr.HttpServerConfig{
 		DisableConsoleColor: !conf.Options.HttpConsoleColor,
