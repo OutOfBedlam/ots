@@ -14,19 +14,18 @@ $ git clone https://github.com/OutOfBedlam/ots.git
 $ cd ots
 ```
 
-- compiled executable binary will be created in './tmp'
+- compiled executable binary will be created in `./tmp`
 
 ```sh
 $ make
 ```
 
-- create package as `./packages/ots-{version}-{os}-{arch}.zip`
-
-```sh
-$ make package
-```
-
 ### Start OTS as tile-rendering-server and OSM data-server in a process
+
+> You need to download osm.pbf file from OpenStreetMap sites<br/>
+> https://wiki.openstreetmap.org/wiki/Planet.osm#Country_and_area_extracts <br/>
+
+Current version of OTS loads whole map data into memory, so make sure your osm.pbf file is size enough to fit system memory.
 
 ```
 ./tmp/ots server -p 1918 -i ./tmp/my-area.osm.pbf 
@@ -36,7 +35,7 @@ $ make package
 sequenceDiagram
 autonumber
    Note over Browser, OTS: HTTP (ex: leaflet.js)
-   Browser ->>+ OTS : http://server/{z}/{x}/{y}.png
+   Browser ->>+ OTS : http://server_addr/tiles/{z}/{x}/{y}.png
    OTS->>OTS: Convert coords
    OTS->>OTS: Retrieve map data
    OTS->>OTS: Gen image
@@ -68,7 +67,7 @@ autonumber
 sequenceDiagram
 autonumber
    Note over Browser, Render-Server: HTTP (ex: leaflet.js)
-   Browser ->>+ Render-Server : http://server/{z}/{x}/{y}.png
+   Browser ->>+ Render-Server : http://server_addr/tiles/{z}/{x}/{y}.png
    Render-Server->>Render-Server: Convert coords
    Render-Server ->>+ Data-Server : request map data with lat/lon bounds
    Note over Render-Server, Data-Server: GRPC
