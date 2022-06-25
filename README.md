@@ -77,9 +77,9 @@ autonumber
    Render-Server ->>- Browser: .png
 ```
 
-### 서버 설정 파일로 구동하는 방법
+### Configuration file
 
-`server-config-sample.hcl`을 수정하여 설정파일을 생성하고 `*.hcl` 확장자로 저장하고, `-c` 옵션으로 경로를 지정한다.
+edit and copy `server-config-sample.hcl`, keep file extension as `*.hcl`. then apply the path with `-c` argument.
 
 ```
 ./tmp/ots server -c <config_file.hcl>
@@ -87,7 +87,7 @@ autonumber
 
 *config file items*
 
-| 항목          | 설명         | 예   | 비고|
+| item         | desc        | ex   | |
 | -------------| ------------| --- | -------- |
 | `pname`      | process instance name | `"ots01"` | |
 | `osm-data-source` | data file or data server address | `"./tmp/south-korea-2022-04-18.osm.pbf"` `"tcp://127.0.0.1:1918"` |  |
@@ -95,12 +95,12 @@ autonumber
 | `port`       | listening port    | 1919 | |
 | `grpc.max-recv-msg-size` | grpc limit (MB) | 100 | |
 | `grpc.max-send-msg-size` | grpc limit (MB) | 100 | |
-| `log.console`       | log output to console       | `true` 또는 `false` | |
+| `log.console`       | log output to console       | `true` `false` | |
 | `log.filename`      | log file path               |     | |
 | `log.default-prefix-width` |            | 10 | |
 | `log.default-level` | log level         | `"TRACE"`| | 
-| `http.console-color`| colored http log | `true` 또는 `false` | |
-| `http.debug-mode`   | debug http log   | `true` 또는 `false` | |
+| `http.console-color`| colored http log | `true` `false` | |
+| `http.debug-mode`   | debug http log   | `true` `false` | |
 | `httplog.console`   |||
 | `httplog.filename`  |||
 | `httplog.default-prefix-width`|||
@@ -108,16 +108,16 @@ autonumber
 
 *rendering server only items*
 
-| 항목          | 설명         | 예   | 비고|
-| -------------| ------------| --- | -------- |
-| `cache-size` | size of lru cache | 2000 | |
-| `show-watermark` | watermark (tile coordinates) on tiles | true false | |
-| `show-labels` | enable labels | true false | |
+| item             | desc                                  | ex             |
+| -----------------| --------------------------------------| -------------- |
+| `cache-size`     | size of lru cache                     | 2000           |
+| `show-watermark` | watermark (tile coordinates) on tiles | `true` `false` |
+| `show-labels`    | enable labels                         | `true` `false` |
 
 
 ### Where to download `*.osm.pdf` files
 
-한국 지역 osm.pbf 파일 다운로드
+ex) Download south korean osm.pbf file
 - https://download.geofabrik.de/asia/south-korea.html
 - OSM data up to 2022-04-17T20:21:54Z. File size: 148 MB;
 
