@@ -116,7 +116,7 @@ edit and copy `server-config-sample.hcl`, keep file extension as `*.hcl`. then a
 > All items in config file can be override by command line arguments. the name of argument is same as config item with double dash `--`. For example, to override port number `ots -c my-config.hcl --port=2929`, port number 2929 will be applied.
 
 
-### Where to download `*.osm.pdf` files
+### Where to download `*.osm.pbf` files
 
 ex) Download south korean osm.pbf file
 - https://download.geofabrik.de/asia/south-korea.html
